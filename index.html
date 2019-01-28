@@ -1,0 +1,126 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  
+  <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+  <!-- uncomment lines below to include extra p5 libraries -->
+  <!--<script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.js"></script>-->
+  <!--<script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.js"></script>-->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+  <script language="javascript" type="text/javascript" src="particle.js"></script>
+  <!-- this line removes any default padding and style. you might only need one of these values set. -->
+  <style> body {padding: 0; margin: 0;} </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/excanvas.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/jquery.canvasjs.min.js"></script>
+</head>
+
+<body>
+    <div style="width:50%; float:right">
+        <div id="chartContainer" style="height: 200px; width:100%; display: inline-block;"></div><br>
+        <div id="chartContainer2" style="height: 200px; width:100%; display: inline-block;"></div>
+        <div id="chartContainer3" style="height: 200px; width:100%; display: inline-block;"></div>
+    </div>
+    <div style="width: 50%; float:left">
+        <div id="chartContainer4" style="height: 200px; width:100%; display: inline-block;"></div>
+        <div id="chartContainer5" style="height: 200px; width:100%; display: inline-block;"></div>
+        <div id="chartContainer6" style="height: 200px; width:100%; display: inline-block;"></div>
+
+    </div>
+
+
+    <script>
+        var dps = []; // dataPoints
+        var chart = new CanvasJS.Chart("chartContainer", {
+          title :{
+            text: "Earth and sun distance"
+          },
+          axisY: {
+            includeZero: false
+          },      
+          data: [{
+            type: "line",
+            dataPoints: dps
+          }]
+        });
+        
+    var dps2 = []; // dataPoints
+    var chart2 = new CanvasJS.Chart("chartContainer2", {
+      title :{
+        text: "Sun and venus distance"
+      },
+      axisY: {
+        includeZero: false
+      },      
+      data: [{
+        type: "line",
+        dataPoints: dps2
+      }]
+    });
+
+    var dps3 = []; // dataPoints
+    var chart3 = new CanvasJS.Chart("chartContainer3", {
+      title :{
+        text: "Venus and earth distance"
+      },
+      axisY: {
+        includeZero: false
+      },      
+      data: [{
+        type: "line",
+        dataPoints: dps3
+      }]
+    });
+
+    var dps4 = []; // dataPoints
+    var chart4 = new CanvasJS.Chart("chartContainer4", {
+      title :{
+        text: "Sun and earth strength"
+      },
+      axisY: {
+        includeZero: false
+      },      
+      data: [{
+        type: "line",
+        dataPoints: dps4
+      }]
+    });
+
+    var dps5 = []; // dataPoints
+    var chart5 = new CanvasJS.Chart("chartContainer5", {
+      title :{
+        text: "Venus and earth strength"
+      },
+      axisY: {
+        includeZero: false
+      },      
+      data: [{
+        type: "line",
+        dataPoints: dps5
+      }]
+    });
+
+    var dps6 = []; // dataPoints
+    var chart6 = new CanvasJS.Chart("chartContainer6", {
+      title :{
+        text: "Earth and venus strength"
+      },
+      axisY: {
+        includeZero: false
+      },      
+      data: [{
+        type: "line",
+        dataPoints: dps6
+      }]
+    });
+    
+  chart.render();
+  chart2.render();
+  chart3.render();
+  chart4.render();
+  chart5.render();
+  chart6.render();
+  </script>
+</body>
+</html>
