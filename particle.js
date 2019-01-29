@@ -1,9 +1,8 @@
-// Daniel Shiffman
-// http://codingtra.in
-// Attraction / Repulsion
-// Video: https://youtu.be/OAcXnzRNiCY
 
+//Particle function
 function Particle(x, y, mass, color, ballname) {
+  
+  //Start variables
   this.pos = createVector(x, y);
   this.prev = createVector(x, y);
   this.vel = createVector(); 
@@ -21,6 +20,7 @@ function Particle(x, y, mass, color, ballname) {
     this.acc.mult(0);
   }
 
+  //Draws the particle with p5.js to canvas.
   this.show = function() {
 
     if(color == "sun"){
@@ -39,30 +39,31 @@ function Particle(x, y, mass, color, ballname) {
 
   }
 
+  //attraction
   this.attracted = function(target) {
-    //Laver en variable der indholder en vector som peger mod target
+    //Create a variable that contains the vector that points towards the target.
     //(x2-x1)(y2-y1)    (target.pos.x - this.pos.x) (target.pos.y - this.pos.y)
     var force = p5.Vector.sub(target.pos, this.pos);
     
-    //Laver variable d som indholder længden af vektoren der peger mod target
+    //Creates a variable r that contain the distance of the vector.
     // sqrt(  x^2 + y^2  )
     var r = force.mag();
 
-    //Konstant
+    //Constant
     var G = 50;
 
-    //Beregner den kraft som kuglen skal bruge til at bevæge sig mod target
+    //Calculates the force, from newtons law of gravitation
     var strength = G*((this.mass * target.mass)/(Math.pow((r + 10), 2)))
     
-    //Sætter den beregnede styrke til variablen force
+    //Sets new force
     force.setMag(strength);
 
+    //Canvas.js related stuff
     if(color == "sun" && target.color == "earth"){
       dps.push({y: r})
       dps4.push({y: strength});
       chart.render();
       chart4.render();
-
     }else if(color == "sun" && target.color == "venus"){
       dps2.push({y: r})
       dps5.push({y: strength})
@@ -75,12 +76,7 @@ function Particle(x, y, mass, color, ballname) {
       chart6.render();
     }
 
-
-    /*if (d < 20) {
-      force.mult(0);
-    }*/
-
-    //Tilføjer kraften til accelerationen.
+    //Add the force to the acceleration (p5.js calculations)
     this.acc.add(force);
 
   }
